@@ -7,6 +7,12 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}   
+
+
+
 h1, h2, h3, h4, h5, h6, span {
     color: #242424;
     text-align: center;
@@ -24,10 +30,24 @@ p {
 }
 
 a{
-    text-decoratioin: none;
+    text-decoration: none;
 }
 
+.link__hover--effect:after {
+content: "";
+position: absolute
+height: 3px;
+width: 100%;
+left:0;
+bottom: -3px;
+}
 
+.link__hover-effeect:hover:after {
+    width: 100%;
+    right: 0;
+    transition: all 300ms ease;
+
+.link__hover-
 
 
 li {
@@ -131,7 +151,7 @@ nav {
     flex-direction: column;
     max-width: 600px;
     margin: 0 auto;
-text-align: center
+text-align: center;
 }
  
 .about-me__picture--mask {
@@ -321,15 +341,15 @@ footer {
 }
 
 .footer__logo {
-    margin-bottom: 20px;
+
 }
 
 .footer__social--list {
-    width: 100%
-display: flex;
-max-width: 500px;
-justify-content: space-around;
-    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 28px;
+    max-width: 500px;
 }
 
 .footer__row {
@@ -355,5 +375,19 @@ justify-content: space-around;
 
 .footer__logo--popper {
    right: 0;
-   position: right;
+   position: absolute;
+   top: 30 px;
+   font-weight: 700;
+   opacity: 0;
+    transition: all 300ms ease;
+}
+
+.footer__anchor {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.footer__anchor:hover .footer__logo--popper{
+transform: translateX(60px);
+opacity: 1; 
 }
