@@ -3,7 +3,7 @@
     color: red;
     font-family: 'Lato', sans-serif;
     padding: 0;
-    margin: 0
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -31,23 +31,44 @@ p {
 
 a{
     text-decoration: none;
+    position: relative;
+    transition: opacity 300ms ease;
 }
 
-.link__hover--effect:after {
+i:hover {
+    opacity: 0.7;
+}
+
+.link__hover-effect:after {
 content: "";
-position: absolute
+position: absolute;
 height: 3px;
-width: 100%;
-left:0;
+width: 0;
+right:0;
 bottom: -3px;
+transition: all 300ms ease;
 }
 
-.link__hover-effeect:hover:after {
-    width: 100%;
-    right: 0;
-    transition: all 300ms ease;
+.link__hover-effect--white:after {
+    background-color: white;
+}
 
-.link__hover-
+.link__hover-effect--black:after {
+    background-color:black;
+}
+
+
+
+.link__hover-effect:hover:after {  
+    width: 100%;
+    left: 0;
+    
+}
+
+.link__hover--effect--black:hover:after {
+    background-color: black;
+    width: 100%;    
+}
 
 
 li {
@@ -73,6 +94,7 @@ li {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding:0 12px;
 }
 
 .text-purple {
@@ -101,6 +123,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 12px;
 }
 
 .nav__link--list {
@@ -161,6 +184,19 @@ text-align: center;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba (0, 0, 0, 0.16);
     margin-bottom: 28px;
+    animation: animate-profile-picture 800ms 200ms backwards;
+}
+
+@keyframes animate-profile-picture {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .about-me__picture {
@@ -171,29 +207,51 @@ text-align: center;
 }
 
 .about-me__info--title {
- margin-bottom: 16 px;  
+ margin-bottom: 16 px; 
+ animation: fade-up 650ms 400ms backwards; 
 }
 
 .about-me__info--para {
     font-size: 20px;
     margin-bottom: 28px;
+     animation: fade-up 650ms 400ms backwards; 
 }
 
 .about-me__link {
     font-size: 20px;
     color: black;
-    padding: 0 16px;
+    padding: 0 16px; 
 }
 
-.about-me__img--container {
-    flex: 1;
-    display: flex;
-    align-items: center;
+.about-me__links {
+   animation: fade-up 650ms 400ms backwards;
+}
+
+@keyframes fade-up  {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 .about-me__img {
 width: 100%;
+animation: fade-in 1200ms 800ms backwards;
 }
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} 
 
 /* TECH-STACK */
 
@@ -209,7 +267,7 @@ width: 100%;
 }
 
 .language {
-    width: 25%
+    width: 25%;
     display: flex;
     justify-content: center;
     position: relative; 
@@ -227,6 +285,7 @@ width: 100%;
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .language__name {
@@ -299,7 +358,7 @@ opacity: 1;
 transform: translateY(-50%);
 }
 
-.project__list: {
+.project__list{
    padding-top: 40px;
 }
 
@@ -340,9 +399,6 @@ footer {
     color: #242424;
 }
 
-.footer__logo {
-
-}
 
 .footer__social--list {
     width: 100%;
@@ -390,4 +446,72 @@ footer {
 .footer__anchor:hover .footer__logo--popper{
 transform: translateX(60px);
 opacity: 1; 
+}
+
+/*Small phones, tablets, large smartphones */
+
+@media (max-width: 768px) {
+    nav {
+        height: 68px;
+    }
+    
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .about-me__info--para {
+        font-size: 18px;
+    }
+
+    .language {
+        width: calc(100% / 3);
+    }
+
+    .project__description--para {
+       font-size: 14px;
+    }
+
+    .project__description {
+        left: 30 px;
+        padding-right: 30px;
+    }
+
+    /* SMALL PHONES */
+    @media (max-width: 480px) {
+        .nav__link:not(:last-child) {
+            display: none;
+        }
+
+.project__description {
+    padding: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+
+
+
+        .project__description--para {
+            display: none;
+        }
+    }
+}
+
+.project__description--links{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.project__description--title {
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+}
+
+.project__description--subtitle {
+    text-align: center;
+    margin: 12px 0;
 }
